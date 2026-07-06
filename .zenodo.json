@@ -1,0 +1,13 @@
+{
+  "title": "CVNSS Preprints: GitHub-based arXiv-mini archive for CVNSS4.0 and Vietnamese NLP",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "description": "CVNSS Preprints is an open GitHub Pages archive for CVNSS4.0, Vietnamese NLP, orthographic audit, intermediate representation, and domain-specific AI/NLP/LLM research. This release archives a public preprint package; protected CVNSS rule tables and converter PRO artifacts are not included unless explicitly stated.",
+  "creators": [
+    { "name": "Ngo, Hoang Dai Long", "affiliation": "CVNSS Research Group" }
+  ],
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "keywords": ["CVNSS4.0", "Vietnamese NLP", "Orthographic Audit", "Intermediate Representation", "Preprints", "Open Science"],
+  "communities": []
+}

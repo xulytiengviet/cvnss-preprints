@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CVNSS Preprints</title>
+  <meta name="description" content="CVNSS Preprints — GitHub-based arXiv-mini archive for CVNSS4.0, Vietnamese NLP, DOI Zenodo and open research publication." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <div class="brand"><span class="logo">CV</span><span>CVNSS Preprints</span></div>
+      <div class="navlinks">
+        <a href="#recent">Bài mới</a>
+        <a href="#workflow">Quy trình</a>
+        <a href="docs/CITATION_POLICY.md">Trích dẫn</a>
+        <a href="https://github.com/xulytiengviet/cvnss-preprints" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </nav>
+    <section class="hero-grid">
+      <div>
+        <p class="eyebrow">GitHub Pages · Zenodo DOI · arXiv-mini UI</p>
+        <h1>CVNSS Preprints: mặt tiền công bố mở cho CVNSS4.0 và NLP tiếng Việt.</h1>
+        <p class="subtitle">GitHub lưu PDF, source, metadata và lịch sử phiên bản. GitHub Pages làm giao diện tra cứu kiểu arXiv mini. Zenodo archive GitHub Release và cấp DOI bền vững cho từng bài/phiên bản.</p>
+        <div class="actions">
+          <a class="button primary" href="#recent">Xem preprints</a>
+          <a class="button ghost" href="papers/_template/metadata.yml">Mẫu metadata</a>
+          <a class="button ghost" href="docs/PUBLISHING.md">Hướng dẫn công bố</a>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div><strong id="paperCount">0</strong><span>Preprints</span></div>
+        <div><strong id="versionCount">0</strong><span>Versions</span></div>
+        <div><strong id="categoryCount">0</strong><span>Categories</span></div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="notice" id="workflow">
+      <strong>Quy tắc công bố:</strong> mỗi bài có thư mục riêng, PDF/source/metadata/BibTeX riêng, DOI Zenodo sau khi tạo GitHub Release. Website và script dùng MIT License; bài báo mặc định CC-BY-4.0; phép chuẩn/rule table/converter PRO không đưa lên repo công khai nếu chưa được phép mở.
+    </section>
+
+    <section class="search-panel">
+      <input id="searchInput" type="search" placeholder="Tìm theo tiêu đề, tác giả, từ khóa, CVNSS ID..." />
+      <select id="categoryFilter"><option value="all">Tất cả chủ đề</option></select>
+      <select id="yearFilter"><option value="all">Tất cả năm</option></select>
+    </section>
+
+    <section id="categories" class="chips"></section>
+
+    <section id="recent">
+      <div class="section-title">
+        <h2>Recent submissions</h2>
+        <p>Metadata được tải từ <code>data/papers.json</code>.</p>
+      </div>
+      <div id="paperList" class="paper-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>CVNSS Preprints · Versioned by GitHub · Fronted by GitHub Pages · Archived by Zenodo.</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

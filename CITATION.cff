@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Nếu dùng CVNSS Preprints hoặc đăng lại nội dung, vui lòng trích dẫn repository và bài cụ thể bằng DOI Zenodo khi có."
+title: "CVNSS Preprints"
+version: "0.2.0"
+date-released: "2026-07-06"
+url: "https://github.com/xulytiengviet/cvnss-preprints"
+authors:
+  - family-names: "Ngo"
+    given-names: "Hoang Dai Long"
+license: "MIT"
+preferred-citation:
+  type: generic
+  title: "CVNSS Preprints: GitHub-based arXiv-mini archive for CVNSS4.0 and Vietnamese NLP"
+  authors:
+    - family-names: "Ngo"
+      given-names: "Hoang Dai Long"
+  year: 2026
+  url: "https://xulytiengviet.github.io/cvnss-preprints/"

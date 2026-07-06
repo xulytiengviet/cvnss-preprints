@@ -1,0 +1,20 @@
+# Local/private artifacts
+/private/
+/secrets/
+*.secret.*
+*.key
+*.pem
+.env
+
+# Protected CVNSS rule/runtime artifacts - do not publish by accident
+cvnss4_0_converter.pro*
+*converter.pro*
+*official_formula*
+*rule_table_private*
+*gold_private*
+
+# Build/system noise
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
