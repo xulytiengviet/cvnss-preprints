@@ -1,0 +1,24 @@
+id: cvnss-YYYY-NNNN
+title: "Tiêu đề preprint"
+authors:
+  - "Tên tác giả 1"
+  - "Tên tác giả 2"
+year: 2026
+submitted: YYYY-MM-DD
+status: preprint
+version: 1.0.0
+categories:
+  - CVNSS4.0
+  - Vietnamese NLP
+keywords:
+  - CVNSS
+  - NLP
+license: CC-BY-4.0
+repository: https://github.com/xulytiengviet/cvnss-preprints
+pages: https://xulytiengviet.github.io/cvnss-preprints/
+pdf: papers/cvnss-YYYY-NNNN/paper.pdf
+source: papers/cvnss-YYYY-NNNN/source.docx
+bibtex: papers/cvnss-YYYY-NNNN/citation.bib
+doi: ""
+doi_status: pending
+protected_standard_note: "Do not include protected CVNSS rule tables or converter runtime unless explicitly approved."
