@@ -1,0 +1,29 @@
+[
+  {
+    "id": "cvnss-2026-0001",
+    "title": "CVNSS4.0 as an Experimental Orthographic-Audit Writing Model for Vietnamese: Vowel Transformation, Jesuit Missionary Linguistics, and Domain-Specific AI/NLP/LLM Infrastructure",
+    "authors": ["Ngo Hoang Dai Long"],
+    "year": 2026,
+    "submitted": "2026-07-06",
+    "status": "preprint",
+    "version": "1.0.0",
+    "categories": ["CVNSS4.0", "Vietnamese NLP", "Orthographic Audit", "Domain-Specific LLM"],
+    "keywords": ["CVNSS4.0", "Vietnamese orthography", "missionary linguistics", "writing-system typology", "audit trace", "low-resource NLP", "domain-specific LLM"],
+    "abstract": "This preprint proposes CVNSS4.0 as an experimental orthographic-audit writing model for Vietnamese, not as a replacement for Quốc Ngữ. It frames CVNSS4.0 as a machine-readable intermediate representation that decomposes Vietnamese syllables into onset, rhyme/nucleus, coda, tone, and audit metadata; then situates the model within a broader history of missionary linguistics, writing-system typology, and domain-specific AI/NLP/LLM infrastructure.",
+    "pdf": "papers/cvnss-2026-0001/paper.pdf",
+    "source": "papers/cvnss-2026-0001/source.docx",
+    "code": "https://github.com/xulytiengviet/cvnss-preprints",
+    "data": "",
+    "doi": "",
+    "doi_status": "pending",
+    "bibtex": "papers/cvnss-2026-0001/citation.bib",
+    "license": "CC-BY-4.0",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "date": "2026-07-06",
+        "note": "Initial public preprint. DOI pending Zenodo GitHub Release."
+      }
+    ]
+  }
+]
