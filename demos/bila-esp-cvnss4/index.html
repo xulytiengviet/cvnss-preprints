@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Demo kiến trúc Bila ESP trong hệ sinh thái CVNSS4.0 và robot tương tác.">
+<title>Bila ESP × CVNSS4.0 — Robot Interaction Demo</title>
+<style>
+:root{color-scheme:dark;--bg:#07111f;--panel:#0e1b2d;--line:#20334f;--text:#edf5ff;--muted:#9db0c8;--cyan:#35d3ff;--violet:#9d7cff;--green:#42e8a2;--amber:#ffc857;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0,#123254 0,transparent 34%),radial-gradient(circle at 90% 20%,#2b1853 0,transparent 31%),var(--bg);color:var(--text);min-height:100vh}a{color:inherit}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}.hero{padding:32px 0 18px}.tag{display:inline-flex;gap:8px;align-items:center;border:1px solid #31567e;background:#0b2138;padding:7px 11px;border-radius:999px;color:#bdefff;font-size:.82rem;font-weight:800}.hero h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.02;margin:18px 0 10px}.hero p{max-width:900px;color:var(--muted);font-size:1.05rem;line-height:1.65}.pipeline{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:22px 0}.node{min-height:78px;padding:10px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#10223a,#0a1728);display:grid;place-content:center;text-align:center;font-size:.82rem;font-weight:800}.node strong{color:var(--cyan);display:block;margin-bottom:4px}.grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:18px;padding-bottom:38px}.card{background:linear-gradient(145deg,rgba(17,34,57,.96),rgba(8,20,35,.96));border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 22px 70px rgba(0,0,0,.22)}.stack{display:grid;gap:16px}.examples,.actions{display:flex;gap:8px;flex-wrap:wrap}button,textarea,select{font:inherit}button{border:1px solid #315170;color:var(--text);background:#142944;border-radius:999px;padding:9px 13px;font-weight:800;cursor:pointer}button:hover{border-color:var(--cyan);transform:translateY(-1px)}button.primary{background:linear-gradient(90deg,#087ba3,#6d4bd1);border-color:transparent}textarea{width:100%;min-height:106px;resize:vertical;border:1px solid #315170;border-radius:14px;padding:13px;background:#071522;color:var(--text);line-height:1.5}.label{font-weight:800;margin-bottom:8px}.results{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 12px;font-size:.94rem}.results dt{font-weight:850;color:#b9cbe0}.results dd{margin:0;overflow-wrap:anywhere}.code{white-space:pre-wrap;overflow-wrap:anywhere;background:#06111d;border:1px solid #1d3553;border-radius:14px;padding:13px;font:12.5px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:#cfe8ff}.device-shell{position:sticky;top:14px;border:8px solid #283241;border-radius:32px;padding:15px;background:#050a12;min-height:500px;box-shadow:0 28px 75px rgba(0,0,0,.4),inset 0 0 0 1px #455264}.device-top{display:flex;justify-content:space-between;font-size:.76rem;color:#91a4bb}.screen{margin-top:18px;border-radius:19px;min-height:410px;padding:17px;background:radial-gradient(circle at 50% 16%,#123c5a,transparent 38%),linear-gradient(#071729,#090e18);border:1px solid #253b55}.status{text-align:center;letter-spacing:.15em;font-weight:900;font-size:.72rem;color:var(--green)}.face{text-align:center;font-size:5rem;margin:18px 0}.bubble{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);padding:14px;border-radius:17px}.vn{font-size:1.02rem;line-height:1.5}.cv{border-top:1px solid rgba(255,255,255,.15);margin-top:10px;padding-top:9px;color:#b8d8ff;font:13px/1.5 ui-monospace,monospace}.audit{margin-top:13px;color:#c9b9ff;font:12px/1.55 ui-monospace,monospace}.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.legend div{padding:12px;border:1px solid var(--line);border-radius:14px;background:#0a1829}.legend strong{display:block;color:var(--cyan);margin-bottom:5px}.note{font-size:.87rem;color:var(--muted);line-height:1.55}.ok{color:var(--green)}.warn{color:var(--amber)}footer{padding:0 0 32px;color:var(--muted);font-size:.85rem}@media(max-width:900px){.pipeline{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.device-shell{position:static}.legend{grid-template-columns:1fr}.results{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero wrap">
+<span class="tag">🤖 BILA ESP · CVNSS4.0 · MCP</span>
+<h1>Bila ESP trong kiến trúc<br>CVNSS4.0 và robot tương tác</h1>
+<p>Demo minh họa vai trò của Bila ESP như lớp thiết bị vật lý: nghe bằng micrô, phát giọng qua loa, hiển thị trạng thái/cảm xúc và thực thi hành động robot. CVNSS4.0 hoạt động ở gateway phía máy chủ để chuẩn hóa câu tiếng Việt trước khi phân giải ý định và gọi công cụ MCP.</p>
+<div class="pipeline" aria-label="Luồng xử lý">
+<div class="node"><strong>01</strong>Micrô ESP32</div><div class="node"><strong>02</strong>Opus / WebSocket</div><div class="node"><strong>03</strong>ASR tiếng Việt</div><div class="node"><strong>04</strong>CVNSS4.0 IR</div><div class="node"><strong>05</strong>Intent / LLM</div><div class="node"><strong>06</strong>MCP tools/call</div><div class="node"><strong>07</strong>Loa · LCD · Servo</div>
+</div>
+</header>
+<main class="wrap grid">
+<section class="stack">
+<div class="card stack">
+<div><div class="label">Nhập câu lệnh tiếng Việt</div><textarea id="input">Tăng âm lượng lên 60 phần trăm</textarea></div>
+<div class="examples">
+<button data-text="Tăng âm lượng lên 60 phần trăm">Âm lượng 60</button>
+<button data-text="Giảm độ sáng còn 35 phần trăm">Độ sáng 35</button>
+<button data-text="Đổi sang giao diện tối">Giao diện tối</button>
+<button data-text="Chụp ảnh phía trước và mô tả những gì đang thấy">Camera</button>
+<button data-text="Robot hãy gật đầu và chào tôi">Servo robot</button>
+</div>
+<div class="actions"><button class="primary" id="run">▶ Phân tích và mô phỏng</button><button id="reset">Đặt lại</button></div>
+</div>
+<div class="card">
+<h2>Kết quả gateway</h2>
+<dl class="results"><dt>Quốc ngữ</dt><dd id="vnOut">—</dd><dt>CVNSS4.0 minh họa</dt><dd id="cvOut">—</dd><dt>Intent</dt><dd id="intentOut">—</dd><dt>MCP tool</dt><dd id="toolOut">—</dd><dt>Thiết bị thực hiện</dt><dd id="actionOut">—</dd><dt>Trạng thái</dt><dd id="stateOut">—</dd></dl>
+</div>
+<div class="card stack"><div><h2>Thông điệp STT mở rộng</h2><pre class="code" id="sttJson">{}</pre></div><div><h2>MCP JSON-RPC</h2><pre class="code" id="mcpJson">{}</pre></div></div>
+<div class="card"><h2>Ba lớp không thay thế lẫn nhau</h2><div class="legend"><div><strong>Opus</strong><span class="note">Vận chuyển âm thanh giữa ESP32 và máy chủ.</span></div><div><strong>CVNSS4.0</strong><span class="note">Chuẩn hóa văn bản và tạo khóa canonical cho intent/audit.</span></div><div><strong>MCP</strong><span class="note">Biến ý định thành lệnh điều khiển loa, màn hình, camera, servo và GPIO.</span></div></div><p class="note">Đây là demo kiến trúc. Bản triển khai thực tế nên dùng bộ chuyển đổi CVNSS4.0 audit-safe đầy đủ và kiểm tra ngữ cảnh đối với các nhóm mã nhiều-nghĩa.</p></div>
+</section>
+<aside><div class="device-shell"><div class="device-top"><span>Wi-Fi ●</span><span id="clock">09:52</span><span>🔋 86%</span></div><div class="screen"><div class="status" id="deviceStatus">SẴN SÀNG</div><div class="face" id="face">🙂</div><div class="bubble"><div class="vn" id="screenVn">Hãy chọn một ví dụ hoặc nhập câu lệnh.</div><div class="cv" id="screenCv">CVNSS4.0 canonical sẽ xuất hiện tại đây.</div><div class="audit" id="screenAudit">Intent: —<br>MCP: —<br>Action: —</div></div></div></div></aside>
+</main>
+<footer class="wrap">Bila ESP × CVNSS4.0 · Demo tĩnh chạy hoàn toàn trong trình duyệt · Không gửi dữ liệu ra máy chủ.</footer>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id);
+const DIACRITICS={"à":"al","ả":"az","ã":"as","á":"aj","ạ":"ar","ă":"ao","ằ":"ak","ẳ":"av","ẵ":"aw","ắ":"ax","ặ":"ah","â":"ay","ầ":"ad","ẩ":"aq","ẫ":"ag","ấ":"ab","ậ":"af","è":"el","ẻ":"ez","ẽ":"es","é":"ej","ẹ":"er","ê":"ey","ề":"ed","ể":"eq","ễ":"eg","ế":"eb","ệ":"ef","ì":"il","ỉ":"iz","ĩ":"is","í":"ij","ị":"ir","ò":"ol","ỏ":"oz","õ":"os","ó":"oj","ọ":"or","ô":"oy","ồ":"od","ổ":"oq","ỗ":"og","ố":"ob","ộ":"of","ơ":"oo","ờ":"ok","ở":"ov","ỡ":"ow","ớ":"ox","ợ":"oh","ù":"ul","ủ":"uz","ũ":"us","ú":"uj","ụ":"ur","ư":"uo","ừ":"uk","ử":"uv","ữ":"uw","ứ":"ux","ự":"uh","ỳ":"yl","ỷ":"yz","ỹ":"ys","ý":"yj","ỵ":"yr","đ":"d"};
+function cvnssIllustrative(text){return String(text).normalize("NFC").toLocaleLowerCase("vi-VN").split("").map(ch=>DIACRITICS[ch]||ch).join("").replace(/ngh/g,"w").replace(/ng/g,"w").replace(/nh/g,"h").replace(/ch/g,"k").replace(/ph/g,"f").replace(/gi/g,"j").replace(/kh/g,"k").replace(/\s+/g," ").trim()}
+const SPECS=[
+{id:"SPEAKER_SET_VOLUME",test:t=>/âm lượng/u.test(t),tool:"self.audio_speaker.set_volume",args:t=>({volume:Math.min(100,Math.max(0,number(t,50)))}),face:"😊",action:t=>`Đặt âm lượng loa ở mức ${Math.min(100,Math.max(0,number(t,50)))}%`},
+{id:"SCREEN_SET_BRIGHTNESS",test:t=>/độ sáng|giảm sáng|tăng sáng/u.test(t),tool:"self.screen.set_brightness",args:t=>({brightness:Math.min(100,Math.max(0,number(t,50)))}),face:"🙂",action:t=>`Đặt độ sáng màn hình ở mức ${Math.min(100,Math.max(0,number(t,50)))}%`},
+{id:"SCREEN_SET_THEME",test:t=>/giao diện|chế độ (tối|sáng)/u.test(t),tool:"self.screen.set_theme",args:t=>({theme:/tối/u.test(t)?"dark":"light"}),face:"😎",action:t=>`Chuyển giao diện sang ${/tối/u.test(t)?"tối":"sáng"}`},
+{id:"CAMERA_TAKE_PHOTO",test:t=>/chụp ảnh|camera|mô tả những gì/u.test(t),tool:"self.camera.take_photo",args:t=>({question:t}),face:"🤔",action:()=>"Chụp ảnh và gửi câu hỏi thị giác về máy chủ"},
+{id:"ROBOT_HEAD_NOD",test:t=>/gật đầu|servo|robot/u.test(t),tool:"self.head.nod",args:()=>({count:1,speed:55}),face:"🤖",action:()=>"Điều khiển servo cổ thực hiện một lần gật đầu"}
+];
+function number(t,f){const m=String(t).match(/\d{1,3}/);return m?Number(m[0]):f}
+function resolve(t){const lower=t.toLocaleLowerCase("vi-VN");return SPECS.find(s=>s.test(lower))||null}
+function render(){const text=$("input").value.trim()||"Xin chào Bila ESP";const cv=cvnssIllustrative(text);const spec=resolve(text);const args=spec?spec.args(text):{};const stt={session_id:"demo-session",type:"stt",text,text_cvnss:cv,canonical_version:"CVNSS4.0-demo",display_mode:"dual"};const mcp=spec?{session_id:"demo-session",type:"mcp",payload:{jsonrpc:"2.0",method:"tools/call",params:{name:spec.tool,arguments:args},id:1}}:null;$("vnOut").textContent=text;$("cvOut").textContent=cv;$("intentOut").textContent=spec?spec.id:"GENERAL_DIALOGUE";$("toolOut").textContent=spec?spec.tool:"Không gọi công cụ";$("actionOut").textContent=spec?spec.action(text):"Gửi văn bản cho LLM và phát câu trả lời bằng TTS";$("stateOut").innerHTML=spec?'<span class="ok">Đã phân giải lệnh</span>':'<span class="warn">Hội thoại thông thường</span>';$("sttJson").textContent=JSON.stringify(stt,null,2);$("mcpJson").textContent=mcp?JSON.stringify(mcp,null,2):"// Không cần tools/call cho câu hội thoại này";$("deviceStatus").textContent=spec?"ĐANG THỰC THI":"ĐANG SUY NGHĨ";$("face").textContent=spec?spec.face:"💬";$("screenVn").textContent=text;$("screenCv").textContent=cv;$("screenAudit").innerHTML=`Intent: ${spec?spec.id:"GENERAL_DIALOGUE"}<br>MCP: ${spec?spec.tool:"—"}<br>Action: ${spec?spec.action(text):"LLM → TTS"}`;setTimeout(()=>{$("deviceStatus").textContent="SẴN SÀNG"},900)}
+document.querySelectorAll("[data-text]").forEach(b=>b.addEventListener("click",()=>{$("input").value=b.dataset.text;render()}));$("run").addEventListener("click",render);$("reset").addEventListener("click",()=>{$("input").value="Tăng âm lượng lên 60 phần trăm";render()});setInterval(()=>{$("clock").textContent=new Date().toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"})},1000);render();
+})();
+</script>
+</body>
+</html>
